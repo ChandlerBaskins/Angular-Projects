@@ -1,0 +1,19 @@
+
+<article class="single-tour">
+  <img [src]="tour.image" [alt]="tour.name" />
+  <footer>
+    <div class="tour-info">
+      <h4>{{ tour.name }}</h4>
+      <h4 class="tour-price">${{ tour.price }}</h4>
+    </div>
+    <p>
+      {{ tourInfo | async }}...
+      <button (click)="clickReadMore()">
+        {{ readMore ? 'Read Less' : 'Read More' }}
+      </button>
+    </p>
+
+    <button (click)="onNotInterested(tour.id)" class="delete-btn">Not Interested</button>
+  </footer>
+</article>
+

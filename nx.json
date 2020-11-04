@@ -19,12 +19,7 @@
       "runner": "@nrwl/nx-cloud",
       "options": {
         "accessToken": "Yjk1MzUxMDYtMjk3My00MGE1LWExZWEtZGY5MjdjYzZhOWI0fHJlYWQtd3JpdGU=",
-        "cacheableOperations": [
-          "build",
-          "test",
-          "lint",
-          "e2e"
-        ],
+        "cacheableOperations": ["build", "test", "lint", "e2e"],
         "canTrackAnalytics": false,
         "showUsageWarnings": true
       }
@@ -36,9 +31,14 @@
     },
     "birthday-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "birthday"
-      ]
+      "implicitDependencies": ["birthday"]
+    },
+    "tours": {
+      "tags": []
+    },
+    "tours-e2e": {
+      "tags": [],
+      "implicitDependencies": ["tours"]
     }
   }
 }

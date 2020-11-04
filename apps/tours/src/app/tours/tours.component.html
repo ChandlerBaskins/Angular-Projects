@@ -1,0 +1,12 @@
+<section *ngIf="tours$ | async as tours; else loading">
+  <div class="title">
+    <h2>Our Tours</h2>
+    <div class="underline"></div>
+  </div>
+  <div>
+    <tour (readMoreEvent)="onReadMore($event)" *ngFor="let tour of tours" [tour]="tour"></tour>
+  </div>
+</section>
+
+<ng-template #loading>Loading</ng-template>
+<div *ngIf="error">ERROR</div>

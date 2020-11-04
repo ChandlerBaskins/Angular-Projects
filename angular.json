@@ -112,6 +112,115 @@
           }
         }
       }
+    },
+    "tours": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "apps/tours",
+      "sourceRoot": "apps/tours/src",
+      "prefix": "angular-projects-mono",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/tours",
+            "index": "apps/tours/src/index.html",
+            "main": "apps/tours/src/main.ts",
+            "polyfills": "apps/tours/src/polyfills.ts",
+            "tsConfig": "apps/tours/tsconfig.app.json",
+            "aot": true,
+            "assets": ["apps/tours/src/favicon.ico", "apps/tours/src/assets"],
+            "styles": ["apps/tours/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/tours/src/environments/environment.ts",
+                  "with": "apps/tours/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "tours:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "tours:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "tours:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/tours/src/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/tours/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "tours-e2e": {
+      "root": "apps/tours-e2e",
+      "sourceRoot": "apps/tours-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/tours-e2e/cypress.json",
+            "tsConfig": "apps/tours-e2e/tsconfig.e2e.json",
+            "devServerTarget": "tours:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "tours:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/tours-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
     }
   },
   "cli": {
