@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BehaviorSubject, combineLatest, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { TourModel } from '../tours.service';
@@ -7,6 +7,7 @@ import { TourModel } from '../tours.service';
   selector: 'tour',
   templateUrl: './tour.component.html',
   styleUrls: ['./tour.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TourComponent implements OnInit {
   readMore = false;
@@ -14,6 +15,7 @@ export class TourComponent implements OnInit {
   readMoreSubject = new BehaviorSubject<boolean>(this.readMore);
   readMoreAction$ = this.readMoreSubject.asObservable();
   @Input() tour: TourModel;
+  @Output() notInterestedClick = new EventEmitter<string>()
 
   ngOnInit() {
     this.tourInfo = combineLatest([of(this.tour), this.readMoreAction$]).pipe(
@@ -30,7 +32,7 @@ export class TourComponent implements OnInit {
   }
 
 
-  onNotInterested(id:number){
-    console.log(id)
+  onNotInterested(id:string){
+    this.notInterestedClick.emit(id)
   }
 }

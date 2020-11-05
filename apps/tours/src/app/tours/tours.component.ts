@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { BehaviorSubject, combineLatest, EMPTY, Observable } from 'rxjs';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { EMPTY, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { TourModel, ToursService } from '../tours.service';
 
@@ -7,9 +7,10 @@ import { TourModel, ToursService } from '../tours.service';
   selector: 'tour-list',
   templateUrl: './tours.component.html',
   styleUrls: ['./tours.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ToursComponent {
-  tours$: Observable<TourModel[]>;
+  tours$: Observable<TourModel[] | string>;
   error = false;
   constructor(private service: ToursService) {
     this.tours$ = this.service.tours$.pipe(
@@ -19,5 +20,10 @@ export class ToursComponent {
       })
     );
   }
-
+  onRefresh() {
+    this.service.onRefresh();
+  }
+  notInterestedClick(id: string) {
+    this.service.onNotInterested(id);
+  }
 }

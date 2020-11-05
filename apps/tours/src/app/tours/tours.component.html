@@ -3,8 +3,13 @@
     <h2>Our Tours</h2>
     <div class="underline"></div>
   </div>
+  <div class="title" *ngIf="tours.length === 0">
+    <h2  >No tours left!</h2>
+    <button (click)="onRefresh()" class="btn">Refresh</button>
+  </div>
+  
   <div>
-    <tour (readMoreEvent)="onReadMore($event)" *ngFor="let tour of tours" [tour]="tour"></tour>
+    <tour (notInterestedClick)="notInterestedClick($event)" *ngFor="let tour of tours" [tour]="tour"></tour>
   </div>
 </section>
 
