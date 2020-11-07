@@ -39,6 +39,13 @@
     "tours-e2e": {
       "tags": [],
       "implicitDependencies": ["tours"]
+    },
+    "reviews": {
+      "tags": []
+    },
+    "reviews-e2e": {
+      "tags": [],
+      "implicitDependencies": ["reviews"]
     }
   }
 }

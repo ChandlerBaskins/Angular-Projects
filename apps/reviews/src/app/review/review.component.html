@@ -1,0 +1,21 @@
+
+<article *ngIf="review$ | async as review" class="review">
+  <div class="img-container">
+    <img [src]="review.image" alt="" class="person-img" />
+    <span class="quote-icon"> </span>
+  </div>
+  <h4 class="author">{{review.name}}</h4>
+  <p class="job">{{review.job}}</p>
+  <p class="info">{{review.text}}</p>
+  <div class="button-container">
+    <button [disabled]="disabledNext$ | async" (click)="onClick('increment')">
+      Next
+    </button>
+    <button [disabled]="disabledPrev$ | async" (click)="onClick('decrement')">
+      Back
+    </button>
+  </div>
+  <button class="random-btn" onClick="{randomPerson}">
+    surprise me
+  </button>
+</article>
