@@ -29,23 +29,11 @@
     "birthday": {
       "tags": []
     },
-    "birthday-e2e": {
-      "tags": [],
-      "implicitDependencies": ["birthday"]
-    },
     "reviews": {
       "tags": []
     },
-    "reviews-e2e": {
-      "tags": [],
-      "implicitDependencies": ["reviews"]
-    },
     "tours": {
       "tags": []
-    },
-    "tours-e2e": {
-      "tags": [],
-      "implicitDependencies": ["tours"]
     }
   },
   "targetDependencies": {
