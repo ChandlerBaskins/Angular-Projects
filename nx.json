@@ -33,19 +33,27 @@
       "tags": [],
       "implicitDependencies": ["birthday"]
     },
-    "tours": {
-      "tags": []
-    },
-    "tours-e2e": {
-      "tags": [],
-      "implicitDependencies": ["tours"]
-    },
     "reviews": {
       "tags": []
     },
     "reviews-e2e": {
       "tags": [],
       "implicitDependencies": ["reviews"]
+    },
+    "tours": {
+      "tags": []
+    },
+    "tours-e2e": {
+      "tags": [],
+      "implicitDependencies": ["tours"]
     }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
   }
 }
